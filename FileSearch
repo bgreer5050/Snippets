@@ -1,0 +1,23 @@
+ 
+                DirectoryInfo di = new DirectoryInfo(@"C:\Users\someuser\OneDrive");
+
+                FileInfo[] fileInfos = di.GetFiles("**", SearchOption.AllDirectories);
+                List<FileInfo> _files = new List<FileInfo>();
+
+                while (true)
+                {
+                    Console.WriteLine("Getting files in path.");
+                    Console.WriteLine("Search Text?");
+
+                    string searchFile = Console.ReadLine();
+                    searchFile = searchFile.ToLower().Trim();
+                    _files = fileInfos.Where(c => c.Name.ToLower().Contains(searchFile)).ToList();
+                    foreach (var _f in _files.OrderByDescending(c=>c.CreationTime))
+                    {
+                        Console.WriteLine(_f.FullName);
+                    }
+
+                    Console.WriteLine("Press any key to continue...");
+                    Console.ReadKey();
+                    Console.Clear();
+                }
