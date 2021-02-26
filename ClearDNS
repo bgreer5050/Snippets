@@ -1,0 +1,33 @@
+while (true)
+            {
+                List<string> dnsNames = new List<string>();
+                dnsNames.Add("abc.com");
+                dnsNames.Add("abc.com");
+                dnsNames.Add("abc.com");
+                dnsNames.Add("abc.com");
+                dnsNames.Add("abc.com");
+                dnsNames.Add("abc.com");
+                dnsNames.Add("abc.com");
+                dnsNames.Add("abc.com");
+                dnsNames.Add("abc.com");
+
+                foreach (var s in dnsNames)
+                {
+                    DnsUtils.FlushCache(s);
+
+                    System.Net.NetworkInformation.Ping ping = new System.Net.NetworkInformation.Ping();
+                    System.Net.NetworkInformation.PingReply reply = ping.Send(s);
+
+                    try
+                    {
+                        Console.WriteLine($"{s} - {reply.Address.ToString()}");
+                    }
+                    catch (Exception)
+                    {
+
+                        
+                    }
+                    
+                    Console.ReadKey();
+                }
+            
