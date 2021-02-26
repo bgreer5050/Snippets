@@ -1,0 +1,12 @@
+using SendGrid;
+using SendGrid.Helpers.Mail;
+
+            var apiKey = "SG.zbdmUEh3Q8e3Fb-Ag3745983743894798758374C10rXIGv-U";
+            var client = new SendGridClient(apiKey);
+            var from = new EmailAddress("Jim.John@gmail.com", "Jim John");
+            var subject = "Subscription";
+            var to = new EmailAddress("John.Doe@gmail.com", "Some Sender");
+            var plainTextContent = "Cancel subscription #";
+            var htmlContent = "<strong>and easy to do anywhere, even with C#</strong>";
+            var msg = MailHelper.CreateSingleEmail(from, to, subject, plainTextContent, htmlContent);
+            var response = client.SendEmailAsync(msg).Result;
