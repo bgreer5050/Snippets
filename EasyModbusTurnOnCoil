@@ -1,0 +1,17 @@
+  EasyModbus.ModbusClient modbusClient = new ModbusClient();
+            modbusClient.IPAddress = "10.0.205.63";
+            //modbusClient.IPAddress = "10.0.205.63";
+            //modbusClient.IPAddress = "10.0.204.80";
+            modbusClient.Connect();
+
+
+            try
+            {
+                modbusClient.WriteSingleCoil(8192, true);
+            }
+            catch (Exception)
+            {
+
+              
+            }
+            try
